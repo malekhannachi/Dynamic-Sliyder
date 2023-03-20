@@ -49,12 +49,13 @@
   width: 18%;
   padding: 0 10px;
   border-right: 1px solid #cbc5c5;
+  cursor: pointer;
 }
 
 mat-icon {
-  background: linear-gradient(to top, #4889dd, #0a1e90);
+  
   color: #fff;
-  border-radius: 50%;
+ 
   padding: 2px;
   height: 30px;
   font-size: 29px;

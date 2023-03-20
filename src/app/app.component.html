@@ -1,21 +1,25 @@
-
 <div class="box">
-  <button class="btn btn-danger delete">X</button>
-  <div class="sliderBox">
-      <div class="previewBox">
-          <img src="./../assets/images/placeholder-image.png" id="preview" alt="">
-      </div>
-      <hr>
-      <div class="slider">
-          <div class="uploudBtn"> 
-              <label for="upload" class="btn btn-success">+</label>
-          </div>
-      </div>
-      <div class="d-flex justify-content-end align-items-center p-4">
-          <mat-icon>arrow_back</mat-icon>
-          <mat-icon>arrow_forward</mat-icon>
-      </div>
-  </div>
+    <button class="btn btn-danger delete" (click)="deleteImage()">x</button>
+    <div class="sliderBox">
+        <div class="previewBox">
+            <img onerror="src='./../assets/images/placeholder-image.png'" [src]="imageUrl" id="preview" alt="">
+        </div>
+        <hr>
+        <div class="slider">
+            <div class="uploudBtn">
+                <label for="upload" class="btn btn-success" *ngIf="images.length < 5">+</label>
+
+                <input type="file" id="upload" hidden multiple (change)="getImage($event)">
+
+                <img *ngFor="let img of images ; let i = index" [src]="img" (click)="showImage(i)"
+                    alt="image not found">
+            </div>
+        </div>
+        <div class="d-flex justify-content-end align-items-center p-4">
+            <button mat-raised-button color="warn" class="mx-1" (click)="previewImage()"
+                [disabled]=" indexImage == 0  "> <mat-icon>arrow_back</mat-icon></button>
+            <button mat-raised-button color="primary" class="mx-1" (click)="nextImage()"
+                [disabled]="(images.length - 1) == indexImage "> <mat-icon>arrow_forward</mat-icon></button>
+        </div>
+    </div>
 </div>
-
-
